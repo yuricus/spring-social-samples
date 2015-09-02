@@ -1,17 +1,12 @@
+plugins {
+	id "org.akhikhl.gretty" version "1.2.4"
+}
+
 apply plugin: 'eclipse'
 apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
-apply plugin: 'tomcat'
 
-buildscript {
-    repositories {
-        mavenCentral()
-    }
 
-    dependencies {
-        classpath 'org.gradle.api.plugins:gradle-tomcat-plugin:0.9.9'
-    }
-}
 
 sourceCompatibility=1.7
 targetCompatibility=1.7
@@ -21,13 +16,7 @@ war {
 }
 
 dependencies {
-    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
-           "org.apache.tomcat.embed:tomcat-embed-logging-juli:${tomcatVersion}"
-    tomcat("org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}") {
-        exclude group: 'org.eclipse.jdt.core.compiler', module: 'ecj'
-    }
-
-	compile "org.springframework:spring-context:$springVersion"
+  	compile "org.springframework:spring-context:$springVersion"
 	compile "org.springframework:spring-jdbc:$springVersion"
 	compile "org.springframework:spring-tx:$springVersion"
 	compile "org.springframework:spring-web:$springVersion"
